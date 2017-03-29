@@ -1,8 +1,8 @@
 
 
-let id = 0;
+let id = 1;
 
-export default function PostReducer (state=[],action){
+export default function PostReducer (state = [],action){
   switch (action.type) {
     case 'ADD_POST':
       return [
@@ -14,10 +14,6 @@ export default function PostReducer (state=[],action){
           date: new Date() ,
           }
         ]
-      case 'FIND_POST':
-      return state.filter(post => {
-        return post.id === action.id
-      })
     default:
       return [...state]
 
