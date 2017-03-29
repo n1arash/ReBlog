@@ -1,14 +1,23 @@
 import React ,{PropTypes} from 'react';
-import Post from './Post'
 
-const ShowPost = ({posts}) => {
+const getPost = (posts,match) => {
+  return posts.filter(post => Number(match.params.id) === post.id)
+}
+
+
+const ShowPost = ({posts,match}) => {
+  let post = getPost(posts,match);
   return (<div>
-    {posts.map(post => {
-      return (<div key={post.id}>
-        <Post id={post.id} title={post.title} content={post.content} />
+    {post.map(p =>{
+      return(<div key={p.id}>
+        <h1>{p.title}</h1>
+        <legend>
+          <p>{p.content}</p>
+        </legend>
+        <small>Created At: {p.date.toUTCString()}</small>
       </div>)
-    })
-  }</div>)
+    })}
+</div>)
 
 }
 
