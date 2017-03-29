@@ -15,14 +15,11 @@ class App extends Component {
           <ul>
             <li><Link to="/">Home</Link></li>
             <li><Link to="/add">Add Posts</Link></li>
-            <li><Link to="/posts">Posts</Link></li>
           </ul>
 
           <hr/>
           <Route exact path="/" component={IndexPost}/>
-
           <Route path="/posts/:id" component={Posts}/>
-
           <Route path="/add" component={AddPost}/>
         </div>
       </Router>
