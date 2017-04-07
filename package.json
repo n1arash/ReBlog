@@ -8,6 +8,7 @@
     "react-addons-test-utils": "^15.4.2",
     "react-scripts": "0.9.5"
   },
+  "homepage": "http://n1arash.github.io/ReBlog",
   "dependencies": {
     "antd": "^2.9.0",
     "babel-eslint": "^7.1.1",
