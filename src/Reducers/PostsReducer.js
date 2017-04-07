@@ -11,7 +11,7 @@ export default function PostReducer (state = [],action){
           id: id++,
           title: action.title ,
           content: action.content ,
-          date: new Date() ,
+          date: new Date().toUTCString() ,
           }
         ]
     default:
