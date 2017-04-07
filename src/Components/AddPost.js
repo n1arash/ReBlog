@@ -1,28 +1,59 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import { Input, Button, notification} from 'antd'
 
 
+notification.config({
+  duration: 3,
+});
+
+export const openNotification = (message,description) => {
+  const key = `open${Date.now()}`;
+  const btnClick = function () {
+    // to hide notification box
+    notification.close(key);
+
+  };
+  const btn = (
+    <Button type="primary" size="small" onClick={btnClick}>
+      Close
+    </Button>
+  );
+  notification.success({
+    message,
+    description,
+    btn,
+    key,
+  });
+};
 
 const AddPost = ({ dispatch }) => {
   let title;
   let content;
   return (<form onSubmit={e => {
     e.preventDefault();
-    if (!title.value.trim() && ! content.value.trim()){
-      return
+
+    if (!title.refs.input.value.trim() && ! content.refs.input.value.trim()  ){
+      if( title.refs.input.value === '' || content.refs.input.value === '')
+        {
+          return
+        }
     }
     dispatch({
       type:'ADD_POST',
-      title : title.value,
-      content: content.value
+      title : title.refs.input.value,
+      content: content.refs.input.value
     })
-    title.value= '';
-    content.value = '';
-    alert('Post Successfully Added')
+    
+    title.refs.input.value = '';
+    content.refs.input.value = '';
+    openNotification('Congratulation !','You Successfully Added Your Post!');
   }}>
-    <input ref={node => title = node} type="text" /><br />
-    <textarea ref={node => content = node} cols="20" rows="7" placeholder="Type Your Content"></textarea><br />
-    <button type="submit">AddPost</button>
+    <Input size="large" ref={node => title = node} type="text" placeholder="Post Title..." />
+    <div style={{ margin: '24px 0' }} />
+    <Input ref={node => content = node} rows="7" type="textarea" placeholder="Post Content..." />
+    <div style={{ margin: '24px 0' }} />
+    <Button type="primary" htmlType="submit" size="large">Save</Button>
   </form>)
 }
 
