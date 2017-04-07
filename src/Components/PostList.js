@@ -14,7 +14,7 @@ const ShowPost = ({posts,match}) => {
         <legend>
           <p>{p.content}</p>
         </legend>
-        <small>Created At: {p.date.toUTCString()}</small>
+        <small>Created At: {p.date}</small>
       </div>)
     })}
 </div>)

@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "enzyme": "^2.8.0",
+    "enzyme-to-json": "^1.5.0",
+    "react-addons-test-utils": "^15.4.2",
     "react-scripts": "0.9.5"
   },
   "dependencies": {
+    "antd": "^2.9.0",
     "babel-eslint": "^7.1.1",
-    "bootstrap": "^3.3.7",
     "eslint": "^3.14.1",
     "eslint-plugin-react": "^6.9.0",
     "react": "^15.4.2",
