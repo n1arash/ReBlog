@@ -1,20 +1,19 @@
+// @flow
 import React from 'react';
 import {connect} from 'react-redux';
 import { Input, Button, notification} from 'antd'
-
+import { addPost } from '../actions/actions'
 
 notification.config({
   duration: 3,
 });
 
-export const openNotification = (message,description) => {
-  const key = `open${Date.now()}`;
-  const btnClick = function () {
-    // to hide notification box
-    notification.close(key);
+export const openNotification = (message: string, description: string) : void  => {
+  const key : string = `open${Date.now()}`;
 
-  };
-  const btn = (
+  const btnClick = () : void => notification.close(key);
+
+  const btn : React$Element<Button> = (
     <Button type="primary" size="small" onClick={btnClick}>
       Close
     </Button>
@@ -27,10 +26,10 @@ export const openNotification = (message,description) => {
   });
 };
 
-const AddPost = ({ dispatch }) => {
-  let title;
-  let content;
-  return (<form onSubmit={e => {
+const AddPost = ({ dispatch } : Function )  : React$Element<any> => {
+  let title : Object ;
+  let content : Object ;
+  return (<form onSubmit={(e:Event) : void  => {
     e.preventDefault();
 
     if (!title.refs.input.value.trim() && ! content.refs.input.value.trim()  ){
@@ -39,12 +38,9 @@ const AddPost = ({ dispatch }) => {
           return
         }
     }
-    dispatch({
-      type:'ADD_POST',
-      title : title.refs.input.value,
-      content: content.refs.input.value
-    })
-    
+
+    dispatch(addPost(title.refs.input.value,content.refs.input.value))
+
     title.refs.input.value = '';
     content.refs.input.value = '';
     openNotification('Congratulation !','You Successfully Added Your Post!');
