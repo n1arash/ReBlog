@@ -26,7 +26,7 @@ export default function PostReducer (state : Array<Object> = [],action: Action )
         ]
 
     case actionTypes.EDIT_POST:
-      return state.map((item:Object,index:number) : Object =>{
+      return state.map((item:Object) : Object =>{
         if(item.id !== action.id){
           return item
         }
@@ -37,6 +37,13 @@ export default function PostReducer (state : Array<Object> = [],action: Action )
             date: new Date().toUTCString()
            }
       })
+
+      case actionTypes.DELETE_POST:
+        return state.filter(post => {
+          return post.id !== action.id
+        })
+      case actionTypes.GET_POST:
+        return [...state]
 
     default:
       return [...state]
