@@ -1,3 +1,4 @@
+'use strict'
 import React, { Component} from 'react'
 import Posts from './Containers/Posts'
 import AddPost from './Components/AddPost'
@@ -16,7 +17,7 @@ class App extends Component {
 
       { /* Should Refactor Component*/}
       <Layout className="layout">
-          <Navbar />       
+          <Navbar />
         <Content style={{ padding: '0 50px' }}>
             <div style={{ background: '#fff', padding: 24, minHeight: 450 }}>
               <Route exact path="/" component={IndexPost}/>
@@ -25,7 +26,7 @@ class App extends Component {
             </div>
         </Content>
           <Footer style={{ textAlign: 'center' }}>
-            <a href="https://github.com/n1arash/ReBlog" target="_blank">ReBlog Project</a> 
+            <a href="https://github.com/n1arash/ReBlog" target="_blank">ReBlog Project</a>
           </Footer>
         </Layout>
         </div>
