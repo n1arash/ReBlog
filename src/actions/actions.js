@@ -23,5 +23,21 @@ export const editPost = (id:number,title:string,content:string) : ?Object => {
       }
     }
   }
-  retrun ;
+  return ;
+}
+
+export const deletePost = (id:number): ?Object => {
+  if(typeof id === 'number' && id !== null){
+    return {
+      type: 'DELETE_POST',
+      id
+    }
+  }
+  return ;
+}
+
+export const getPosts = () : Object => {
+  return {
+    type: 'GET_POST'
+  }
 }
